@@ -75,6 +75,10 @@ function socket(io) {
       const dataArray = data.split("/");
       io.sockets.in(dataArray[0]).emit("GetPlayerState", dataArray[1]);
     });
+    socket.on("SendGameTime", data => {
+      const dataArray = data.split("/");
+      io.sockets.in(dataArray[0]).emit("GetGameTime", dataArray[1]);
+    });
   });
 }
 function MainLoad() {
