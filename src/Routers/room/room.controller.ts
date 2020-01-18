@@ -44,3 +44,7 @@ export const Start = (req: Request, res: Response) => {
   roomDB.start({ _id });
   Send(res, 200, "게임 방 입장 성공", true);
 };
+export const All = (req: Request, res: Response) => {
+  const list = roomDB.searchAll();
+  res.status(200).send(list);
+};
