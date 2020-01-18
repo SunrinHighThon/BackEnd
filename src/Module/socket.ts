@@ -71,6 +71,10 @@ function socket(io) {
       const getArray = roomDB.score(dataArray);
       io.sockets.in(dataArray[0]).emit("GetStart", getArray);
     });
+    socket.on("SendPlayerState", data => {
+      const dataArray = data.split("/");
+      io.sockets.in(dataArray[0]).emit("GetPlayerState", dataArray[1]);
+    });
   });
 }
 function MainLoad() {
