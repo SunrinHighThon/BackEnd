@@ -67,8 +67,9 @@ function score(data) {
   RoomP.forEach(data => {
     playerscore.push([data.socre, data.nickname]);
   });
-  console.log(playerscore.reverse());
-  return playerscore.reverse();
+  console.log("-------", playerscore.reverse());
+  const ps = playerscore.reverse();
+  return ps;
 }
 function join(data) {
   console.log("joinjoin", data);
@@ -114,9 +115,9 @@ function password(data) {
     .find({ _id: data })
     .value();
   const RRoom = [];
-  Room.player.forEach(data => {
+  Room.player.forEach(value => {
     data.score = 0;
-    RRoom.push(data);
+    RRoom.push(value);
   });
   Roomdb.get("RoomData")
     .find({ _id: data._id })
