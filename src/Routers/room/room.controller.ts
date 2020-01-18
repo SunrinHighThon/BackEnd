@@ -18,7 +18,7 @@ export const Create = (req: Request, res: Response) => {
       {
         nickname,
         master: true,
-        userdata
+        score: 0
       }
     ]
   });
