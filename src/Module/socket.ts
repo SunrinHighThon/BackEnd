@@ -60,9 +60,16 @@ function socket(io) {
       var MainLoadAll = MainLoad();
       socket.emit("sendMainRoom", MainLoadAll);
     });
-    socket.on("sendStart", data => {
+    socket.on("SendStart", data => {
       console.log("시작함", data);
-      io.sockets.in(data).emit("getStart", true);
+      io.sockets.in(data).emit("GetStart", true);
+    });
+    socket.on("SendScore", data => {
+      console.log("스코어", data);
+      const dataArray = data.split("/");
+      // 0: 방키, 1: 닉네임 ,2: 스코어
+      const getArray = roomDB.score(dataArray);
+      io.sockets.in(dataArray[0]).emit("GetStart", getArray);
     });
   });
 }

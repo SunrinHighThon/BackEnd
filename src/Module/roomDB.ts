@@ -46,6 +46,30 @@ function start(data) {
     .assign({ progress: true })
     .write();
 }
+function score(data) {
+  const Room = Roomdb.get("RoomData")
+    .find({ _id: data[0] })
+    .value();
+  const RoomP = [];
+  Room.player.forEach(element => {
+    if (element.nickname == data[1]) {
+      element.score = element.score + data[2];
+    }
+    RoomP.push(element);
+  });
+  console.log(RoomP);
+  Room.player = RoomP;
+  Roomdb.get("RoomData")
+    .find({ _id: data[0] })
+    .assign({ player: Roomdb.player })
+    .write();
+  const playerscore = [];
+  RoomP.forEach(data => {
+    playerscore.push([data.socre, data.nickname]);
+  });
+  console.log(playerscore.sort());
+  return playerscore.sort();
+}
 function join(data) {
   console.log("joinjoin", data);
   const Room = Roomdb.get("RoomData")
@@ -81,4 +105,4 @@ function join(data) {
 function remove() {
   console.log("b");
 }
-export default { setting, push, remove, join, searchAll, leave, start };
+export default { setting, push, remove, join, searchAll, leave, start, score };
