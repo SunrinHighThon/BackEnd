@@ -87,6 +87,10 @@ function socket(io) {
       const dataArray = data.split("/");
       io.sockets.in(dataArray[0]).emit("GetSpawnObj", dataArray[1]);
     });
+    socket.on("PlayerSpawnPoint", data => {
+      const dataArray = data.split("/");
+      io.sockets.in(dataArray[0]).emit("GetPlayersData", dataArray[1]);
+    });
   });
 }
 function MainLoad() {
