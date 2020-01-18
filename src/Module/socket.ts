@@ -69,7 +69,7 @@ function socket(io) {
       const dataArray = data.split("/");
       // 0: 방키, 1: 닉네임 ,2: 스코어
       const getArray = roomDB.score(dataArray);
-      io.sockets.in(dataArray[0]).emit("GetScore", ["test"]);
+      io.sockets.in(dataArray[0]).emit("GetScore", { value: getArray });
     });
 
     socket.on("SendPlayerState", data => {
