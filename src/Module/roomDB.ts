@@ -72,7 +72,6 @@ function score(data) {
   return ps;
 }
 function join(data) {
-  console.log("joinjoin", data);
   const Room = Roomdb.get("RoomData")
     .find({ _id: data._id })
     .value();

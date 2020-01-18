@@ -68,7 +68,8 @@ function socket(io) {
       console.log("스코어", data);
       const dataArray = data.split("/");
       // 0: 방키, 1: 닉네임 ,2: 스코어
-      const getArray = roomDB.score(dataArray);
+      let getArray = [];
+      getArray = roomDB.score(dataArray);
       io.sockets.in(dataArray[0]).emit("GetScore", { value: getArray });
     });
 
