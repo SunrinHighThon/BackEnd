@@ -61,11 +61,11 @@ function score(data) {
   Room.player = RoomP;
   Roomdb.get("RoomData")
     .find({ _id: data[0] })
-    .assign({ player: Roomdb.player })
+    .assign({ player: Room.player })
     .write();
   const playerscore = [];
   RoomP.forEach(data => {
-    playerscore.push([data.socre, data.nickname]);
+    playerscore.push([data.score, data.nickname]);
   });
   console.log("-------", playerscore.reverse());
   const ps = playerscore.reverse();
