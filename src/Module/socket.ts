@@ -79,6 +79,10 @@ function socket(io) {
       const dataArray = data.split("/");
       io.sockets.in(dataArray[0]).emit("GetGameTime", dataArray[1]);
     });
+    socket.on("GameOver", data => {
+      const password = roomDB.password(data);
+      io.sockets.in(data).emit("GameOver", password);
+    });
   });
 }
 function MainLoad() {

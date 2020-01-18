@@ -105,4 +105,20 @@ function join(data) {
 function remove() {
   console.log("b");
 }
-export default { setting, push, remove, join, searchAll, leave, start, score };
+function password(data) {
+  const password = Roomdb.get("RoomData")
+    .find({ _id: data })
+    .value().password;
+  return password;
+}
+export default {
+  setting,
+  push,
+  remove,
+  join,
+  searchAll,
+  leave,
+  start,
+  score,
+  password
+};
