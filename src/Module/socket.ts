@@ -69,7 +69,7 @@ function socket(io) {
       const dataArray = data.split("/");
       // 0: 방키, 1: 닉네임 ,2: 스코어
       const getArray = roomDB.score(dataArray);
-      io.sockets.in(dataArray[0]).emit("GetStart", getArray);
+      io.sockets.in(dataArray[0]).emit("GetScore", getArray);
     });
     socket.on("SendPlayerState", data => {
       console.log(data);
@@ -86,7 +86,7 @@ function socket(io) {
       console.log(data);
 
       const password = roomDB.password(data);
-      io.sockets.in(data).emit("GameOver", password);
+      io.sockets.in(data).emit("GetGameOver", password);
     });
     socket.on("SendSpawnObj", data => {
       console.log(data);

@@ -109,6 +109,25 @@ function password(data) {
   const password = Roomdb.get("RoomData")
     .find({ _id: data })
     .value().password;
+
+  const Room = Roomdb.get("RoomData")
+    .find({ _id: data })
+    .value();
+  const RRoom = [];
+  Room.player.forEach(data => {
+    data.score = 0;
+    RRoom.push(data);
+  });
+  Roomdb.get("RoomData")
+    .find({ _id: data._id })
+    .assign({ player: RRoom })
+    .write();
+  Roomdb.get("RoomData")
+    .find({ _id: data._id })
+    .assign({ progress: false })
+    .write();
+  //스코어 초기화해야됨
+  //진행중을 바꿔야됨
   return password;
 }
 export default {
