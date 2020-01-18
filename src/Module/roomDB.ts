@@ -67,8 +67,8 @@ function score(data) {
   RoomP.forEach(data => {
     playerscore.push([data.socre, data.nickname]);
   });
-  console.log(playerscore.sort());
-  return playerscore.sort();
+  console.log(playerscore.reverse());
+  return playerscore.reverse();
 }
 function join(data) {
   console.log("joinjoin", data);
