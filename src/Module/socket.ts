@@ -83,6 +83,10 @@ function socket(io) {
       const password = roomDB.password(data);
       io.sockets.in(data).emit("GameOver", password);
     });
+    socket.on("SendSpawnObj", data => {
+      const dataArray = data.split("/");
+      io.sockets.in(dataArray[0]).emit("GetSpawnObj", dataArray[1]);
+    });
   });
 }
 function MainLoad() {
