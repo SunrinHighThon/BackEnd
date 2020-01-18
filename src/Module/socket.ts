@@ -72,22 +72,31 @@ function socket(io) {
       io.sockets.in(dataArray[0]).emit("GetStart", getArray);
     });
     socket.on("SendPlayerState", data => {
+      console.log(data);
       const dataArray = data.split("/");
       io.sockets.in(dataArray[0]).emit("GetPlayerState", dataArray[1]);
     });
     socket.on("SendGameTime", data => {
+      console.log(data);
+
       const dataArray = data.split("/");
       io.sockets.in(dataArray[0]).emit("GetGameTime", dataArray[1]);
     });
     socket.on("GameOver", data => {
+      console.log(data);
+
       const password = roomDB.password(data);
       io.sockets.in(data).emit("GameOver", password);
     });
     socket.on("SendSpawnObj", data => {
+      console.log(data);
+
       const dataArray = data.split("/");
       io.sockets.in(dataArray[0]).emit("GetSpawnObj", dataArray[1]);
     });
     socket.on("PlayerSpawnPoint", data => {
+      console.log(data);
+
       const dataArray = data.split("/");
       io.sockets.in(dataArray[0]).emit("GetPlayersData", dataArray[1]);
     });
