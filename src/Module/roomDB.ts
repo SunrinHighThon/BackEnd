@@ -53,7 +53,7 @@ function score(data) {
   const RoomP = [];
   Room.player.forEach(element => {
     if (element.nickname == data[1]) {
-      element.score = element.score + data[2];
+      element.score = element.score + Number(data[2]);
     }
     RoomP.push(element);
   });
@@ -88,7 +88,7 @@ function join(data) {
   player.push({
     nickname: data.nickname,
     master: false,
-    userdata: data.userdata
+    score: 0
   });
   const people = Room.connectedUsers + 1;
   Roomdb.get("RoomData")
